@@ -11,8 +11,15 @@ export function Home() {
 		console.log("inputValue ", inputValue);
 	};
 	const handleKeyPress = event => {
+		if (event.keyCode == "13") {
+			todo.push(inputValue);
+			//setTodo.push(element1[, ...[, elementN]])
+			console.log(todo);
+		}
+		//Utilizar la función setTodo para poder modificar la variable de estado que declaramos con ["Make the bed"..]
 		//que reciba texto pero si esta vacio que no se ejecute, especificar tecla que acepte la orden.
-		//que setee el valor de todo con el valor que viene del input (inputValue)
+		//que setee el valor de toDo con el valor que viene del input (inputValue)
+		// hacer dos if
 	};
 	return (
 		<div className="container">
@@ -24,8 +31,7 @@ export function Home() {
 					placeholder="What needs to be done?"
 					className="form-control my-2"
 					onChange={handleChange}
-					//onKeyPress=
-				></input>
+					onKeyPress={handleKeyPress}></input>
 			</from>
 			<div className="listas-tareas mt-3">
 				<div className="alert alert-warning d-flex">
