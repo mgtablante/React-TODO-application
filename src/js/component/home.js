@@ -6,24 +6,28 @@ export function Home() {
 	const [todo, setTodo] = useState(["", ""]);
 	const [inputValue, setInputValue] = useState("");
 
-	const handleChange = () => {
+	const handleChange = event => {
 		setInputValue(event.target.value);
 	};
 	const handleKeyPress = event => {
+		//event.preventDefault();
 		if (event.key === "Enter") {
 			setTodo([...todo, inputValue]);
-			// 	console.log(todo);
+			//console.log(inputValue);
 			// } else {
 			// 	console.log("no funciona");
 		}
 
-		//que reciba texto pero si esta vacio que no se ejecute, especificar tecla que acepte la orden.
 		//que setee el valor de toDo con el valor que viene del input (inputValue)
+		//crear una funcion handleclick para la x para borrar un elementTodo
+		//borrar elemento de una array
+		//eliminar la numeracion de la lista
+		// video funcionamiento de map
 	};
 	return (
 		<div className="container">
 			<h1 className="text-center">TODOS</h1>
-			<form className="Formulario">
+			<from className="Formulario">
 				<input
 					value={inputValue}
 					type="text"
@@ -31,7 +35,7 @@ export function Home() {
 					className="form-control my-2"
 					onChange={handleChange}
 					onKeyPress={handleKeyPress}></input>
-			</form>
+			</from>
 			<div className="listas-tareas mt-3">
 				<div className="alert alert-warning d-flex">
 					<ol>
@@ -41,10 +45,9 @@ export function Home() {
 						<li>Make the bed</li>
 						<li>Wash my hands</li>
 					</ol>
-					<p>{todo}</p>
-					{/* <h3 className="m-3">
+					<h3 className="m-3">
 						<i className="fas fa-times"></i>
-					</h3> */}
+					</h3>
 				</div>
 			</div>
 		</div>
