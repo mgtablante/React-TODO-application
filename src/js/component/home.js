@@ -3,28 +3,27 @@ import React, { useState } from "react";
 //create your first component
 
 export function Home() {
-	const [todo, setTodo] = useState(["Make the bed", "Wash my hands"]);
-	const [inputValue, setInputValue] = useState([]);
+	const [todo, setTodo] = useState(["", ""]);
+	const [inputValue, setInputValue] = useState("");
 
 	const handleChange = () => {
 		setInputValue(event.target.value);
-		console.log("inputValue ", inputValue);
 	};
 	const handleKeyPress = event => {
-		if (event.keyCode == "13") {
-			todo.push(inputValue);
-			//setTodo.push(element1[, ...[, elementN]])
-			console.log(todo);
+		if (event.key === "Enter") {
+			setTodo([...todo, inputValue]);
+			// 	console.log(todo);
+			// } else {
+			// 	console.log("no funciona");
 		}
-		//Utilizar la función setTodo para poder modificar la variable de estado que declaramos con ["Make the bed"..]
+
 		//que reciba texto pero si esta vacio que no se ejecute, especificar tecla que acepte la orden.
 		//que setee el valor de toDo con el valor que viene del input (inputValue)
-		// hacer dos if
 	};
 	return (
 		<div className="container">
 			<h1 className="text-center">TODOS</h1>
-			<from className="Formulario">
+			<form className="Formulario">
 				<input
 					value={inputValue}
 					type="text"
@@ -32,13 +31,20 @@ export function Home() {
 					className="form-control my-2"
 					onChange={handleChange}
 					onKeyPress={handleKeyPress}></input>
-			</from>
+			</form>
 			<div className="listas-tareas mt-3">
 				<div className="alert alert-warning d-flex">
+					<ol>
+						{todo.map((todoElement, key) => {
+							return <li key={key}>{todoElement}</li>;
+						})}
+						<li>Make the bed</li>
+						<li>Wash my hands</li>
+					</ol>
 					<p>{todo}</p>
-					<h3 className="m-3">
+					{/* <h3 className="m-3">
 						<i className="fas fa-times"></i>
-					</h3>
+					</h3> */}
 				</div>
 			</div>
 		</div>
