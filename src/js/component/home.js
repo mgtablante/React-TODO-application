@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //create your first component
 
 export function Home() {
-	const [todo, setTodo] = useState(["", ""]);
+	const [todo, setTodo] = useState([]);
 	const [inputValue, setInputValue] = useState("");
 
 	const handleChange = event => {
@@ -17,12 +17,13 @@ export function Home() {
 			// } else {
 			// 	console.log("no funciona");
 		}
-
+		// const handleclick = event => {
+		//     const { event } = lista.filter(i != event)
+		//     };
 		//que setee el valor de toDo con el valor que viene del input (inputValue)
 		//crear una funcion handleclick para la x para borrar un elementTodo
 		//borrar elemento de una array
-		//eliminar la numeracion de la lista
-		// video funcionamiento de map
+		//video funcionamiento de map
 	};
 	return (
 		<div className="container">
@@ -34,19 +35,25 @@ export function Home() {
 					placeholder="What needs to be done?"
 					className="form-control my-2"
 					onChange={handleChange}
-					onKeyPress={handleKeyPress}></input>
+					onKeyPress={handleKeyPress}
+					autoFocus></input>
 			</from>
-			<div className="listas-tareas mt-3">
-				<div className="alert alert-warning d-flex">
-					<ol>
+			<div className="list-chores">
+				<div className="alert alert-warning d-flex justify-content-between align-items-center">
+					<ul className="col-sm-10">
 						{todo.map((todoElement, key) => {
-							return <li key={key}>{todoElement}</li>;
+							return (
+								<li className="list-group-item" key={key}>
+									{todoElement}
+								</li>
+							);
 						})}
-						<li>Make the bed</li>
-						<li>Wash my hands</li>
-					</ol>
-					<h3 className="m-3">
-						<i className="fas fa-times"></i>
+						<li className="list-group-item">Make the bed</li>
+						<li className="list-group-item">Wash my hands</li>
+					</ul>
+					<h3 className="m-0">
+						<i className="fas fa-check-circle text-success"></i>
+						<i className="fas fa-minus-circle text-danger"></i>
 					</h3>
 				</div>
 			</div>
