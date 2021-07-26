@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../styles/index.scss";
 // import PropTypes from "prop-types";
 //create your first component
 
@@ -8,53 +9,52 @@ export function Home() {
 
 	const handleChange = event => {
 		setInputValue(event.target.value);
+		setInputValue.current.value = null;
 	};
 	const handleKeyPress = event => {
-		//event.preventDefault();
 		if (event.key === "Enter") {
 			setTodo([...todo, inputValue]);
-			//console.log(inputValue);
-			// } else {
-			// 	console.log("no funciona");
+			setInputValue.current.value = null;
 		}
-		// const handleclick = event => {
-		//     const { event } = lista.filter(i != event)
-		//     };
-		//que setee el valor de toDo con el valor que viene del input (inputValue)
-		//crear una funcion handleclick para la x para borrar un elementTodo
-		//borrar elemento de una array
-		//video funcionamiento de map
+	};
+	const deleteNow = (index, event) => {
+		let newTodo = [...todo];
+		let removed = newTodo.splice(index, 1);
+		setTodo(newTodo);
 	};
 	return (
 		<div className="container">
-			<h1 className="text-center">TODOS</h1>
+			<h1 className="text-center">ToDo List!</h1>
 			<from className="Formulario">
 				<input
 					value={inputValue}
 					type="text"
 					placeholder="What needs to be done?"
-					className="form-control my-2"
+					className="form-control my-4"
 					onChange={handleChange}
 					onKeyPress={handleKeyPress}
 					autoFocus></input>
 			</from>
-			<div className="list-chores">
-				<div className="alert alert-warning d-flex justify-content-between align-items-center">
-					<ul className="col-sm-10">
+			<div className="listElements">
+				<div className=" d-flex align-items-center">
+					<ul className="col">
 						{todo.map((todoElement, key) => {
 							return (
 								<li className="list-group-item" key={key}>
 									{todoElement}
+									<button
+										type="button"
+										onClick={event =>
+											deleteNow(key, event)
+										}>
+										<i className="fas fa-times  fa-sm" />
+									</button>
 								</li>
 							);
 						})}
 						<li className="list-group-item">Make the bed</li>
 						<li className="list-group-item">Wash my hands</li>
 					</ul>
-					<h3 className="m-0">
-						<i className="fas fa-check-circle text-success"></i>
-						<i className="fas fa-minus-circle text-danger"></i>
-					</h3>
 				</div>
 			</div>
 		</div>
