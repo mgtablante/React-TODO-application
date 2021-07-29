@@ -43,17 +43,17 @@ export function Home() {
 								<li className="list-group-item" key={key}>
 									{todoElement}
 									<button
-										type="button"
+										className="button"
 										onClick={event =>
 											deleteNow(key, event)
 										}>
-										<i className="fas fa-times  fa-sm" />
+										<i className="fas fa-trash-alt" />
 									</button>
 								</li>
 							);
 						})}
-						<li className="list-group-item">Make the bed</li>
-						<li className="list-group-item">Wash my hands</li>
+						<li className="list-group-item">Study HTML and CSS</li>
+						<li className="list-group-item">learn JavaScript</li>
 					</ul>
 				</div>
 			</div>
