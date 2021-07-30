@@ -4,7 +4,10 @@ import "../../styles/index.scss";
 //create your first component
 
 export function Home() {
-	const [todo, setTodo] = useState([]);
+	const [todo, setTodo] = useState([
+		"Study HTML and CSS",
+		"learn JavaScript"
+	]);
 	const [inputValue, setInputValue] = useState("");
 
 	const handleChange = event => {
@@ -52,8 +55,6 @@ export function Home() {
 								</li>
 							);
 						})}
-						<li className="list-group-item">Study HTML and CSS</li>
-						<li className="list-group-item">learn JavaScript</li>
 					</ul>
 				</div>
 			</div>
